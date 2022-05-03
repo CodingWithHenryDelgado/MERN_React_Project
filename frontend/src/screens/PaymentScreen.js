@@ -52,7 +52,6 @@ const PaymentScreen = ({ history }) => {
                 onChange={(e) => setPaymentMethod(e.target.value)}
             >
             </Form.Check> */}
-            {/* Soon */}
         </Col>
         </Form.Group>
 
