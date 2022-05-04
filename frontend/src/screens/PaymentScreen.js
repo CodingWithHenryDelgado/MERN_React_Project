@@ -60,7 +60,6 @@ const PaymentScreen = ({ history }) => {
         </Button>
       </Form>
     </FormContainer>
-    // Something
   )
 }
 
