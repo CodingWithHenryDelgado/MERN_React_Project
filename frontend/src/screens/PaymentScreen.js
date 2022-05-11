@@ -56,7 +56,7 @@ const PaymentScreen = ({ history }) => {
         </Form.Group>
 
         <Button type='submit' variant='primary' className='my-3'>
-          Continue
+          Let's Go!
         </Button>
       </Form>
     </FormContainer>
