@@ -7,9 +7,9 @@ import {
     userDetailsReducer,
     userLoginReducer,
     userUpdateProfileReducer,
-    userRegisterReducer,
-    orderCreateReducer
+    userRegisterReducer
 } from './reducers/userReducers.js'
+import { orderCreateReducer } from './reducers/orderReducers';
 
 const reducer = combineReducers({
     productList: productListReducer,
