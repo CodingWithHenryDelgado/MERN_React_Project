@@ -29,11 +29,11 @@ const Header = () => {
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i> Cart
+                  <i className='fas fa-shopping-cart'></i>
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
+                <NavDropdown title={`Profile`} id='username'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>

@@ -45,11 +45,11 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={3}>
+                  <Col md={2}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
-                  <Col md={2}>
+                  <Col md={3}>
                     <Form.Control
                       as='select'
                       value={item.qty}
@@ -81,7 +81,7 @@ const CartScreen = ({ match, location, history }) => {
           </ListGroup>
         )}
       </Col>
-      <Col md={4}>
+      <Col md={4} className='subtotal'>
         <Card>
           <ListGroup variant='flush'>
             <ListGroup.Item>
