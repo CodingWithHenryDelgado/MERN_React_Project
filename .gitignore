@@ -2,3 +2,5 @@
 node_modules/
 /frontend/build
 .env
+/.env
+.*
