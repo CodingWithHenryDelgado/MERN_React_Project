@@ -5,8 +5,10 @@ import { Card } from 'react-bootstrap'
 const Product = ({ product }) => {
     return (
         <Card className='my-3 p-3 rounded'>
-            <Link to={`/product/${product._id}`}>
-                <Card.Img src={product.image} variant='top' />
+            <Link to={`/product/${product._id}`} style={{ width: '100%' }}>
+                <Card.Body style={{ width: '100%', height: 225 }} className="d-flex align-items-center justify-content-center">
+                    <Card.Img className="mx-3" src={product.image} variant='top' style={{ width: '65%', height: 'auto' }} />
+                </Card.Body>
             </Link>
 
             <Card.Body>
