@@ -98,6 +98,23 @@ body {
     height: auto;
 }
 
+.thumbnail {
+    width: 50%;
+}
+
+.white-background {
+    background-color: #fff;
+}
+
+.product-image {
+    margin: 0 15px;
+}
+
+.price-text {
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
 .list-group {
     width: 100%;
 }
@@ -116,13 +133,16 @@ body {
         padding: 0;
     }
 
-    .product-price .card {
-        border: none;
+    .product-image {
+        margin: 0;
     }
 
-    .img-fluid {
-        width: 100%;
-        height: 100%;
+    .thumbnail {
+        width: 75%;
+    }
+
+    .product-price .card {
+        border: none;
     }
 
     .subtotal .card {

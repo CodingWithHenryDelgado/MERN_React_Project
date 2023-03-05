@@ -41,7 +41,7 @@ const ProductScreen = ({ history, match }) => {
       dispatch(listProductDetails(match.params.id))
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
-  }, [dispatch, match, successProductReview])
+  }, [dispatch, match, successProductReview, product._id])
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
@@ -70,8 +70,8 @@ const ProductScreen = ({ history, match }) => {
         <>
           <Meta title={product.name} />
           <Row>
-            <Col md={6} className='product-image'>
-              <Image src={product.image} alt={product.name} fluid />
+            <Col md={6} className='product-image d-flex align-items-center justify-content-center py-4 white-background'>
+              <Image className="thumbnail" src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={6} className='product-spec'>
               <ListGroup variant='flush'>
@@ -84,7 +84,7 @@ const ProductScreen = ({ history, match }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item className='price-text'>${product.price}</ListGroup.Item>
                 <ListGroup.Item className='product-description'>
                   Description: {product.description}
                 </ListGroup.Item>
@@ -93,27 +93,17 @@ const ProductScreen = ({ history, match }) => {
             <Col md={12} className="product-price">
               <Card>
                 <ListGroup variant='flush'>
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Price:</Col>
-                      <Col>
-                        <strong>${product.price}</strong>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Status:</Col>
-                      <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
+                  {product.countInStock > 0 ? '' :
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>OUT OF STOCK</Col>
+                      </Row>
+                    </ListGroup.Item>
+                  }
 
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
-                      <Row>
+                      <Row className='align-items-center'>
                         <Col>Qty</Col>
                         <Col>
                           <Form.Control
@@ -148,7 +138,7 @@ const ProductScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
-          <Row>
+          <Row className='py-4'>
             <Col md={6}>
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
