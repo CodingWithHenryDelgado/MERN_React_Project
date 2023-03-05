@@ -59,9 +59,9 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
-        Go Back
-      </Link>
+      {/* <Link to='/'>
+        <i className="fa-solid fa-arrow-left my-4 back-arrow"></i>
+      </Link> */}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -69,7 +69,7 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <>
           <Meta title={product.name} />
-          <Row>
+          <Row className='product-row'>
             <Col md={6} className='product-image d-flex align-items-center justify-content-center py-4 white-background'>
               <Image className="thumbnail" src={product.image} alt={product.name} fluid />
             </Col>
@@ -81,61 +81,56 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup.Item>
                   <Rating
                     value={product.rating}
-                    text={`${product.numReviews} reviews`}
+                    text={product.numReviews === 1 ? `${product.numReviews} review` : `${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
                 <ListGroup.Item className='price-text'>${product.price}</ListGroup.Item>
                 <ListGroup.Item className='product-description'>
                   Description: {product.description}
                 </ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col md={12} className="product-price">
-              <Card>
-                <ListGroup variant='flush'>
-                  {product.countInStock > 0 ? '' :
-                    <ListGroup.Item>
-                      <Row>
-                        <Col>OUT OF STOCK</Col>
-                      </Row>
-                    </ListGroup.Item>
-                  }
+                {product.countInStock > 0 ? '' :
+                  <ListGroup.Item>
+                    <Row>
+                      <Col className='out-of-stock'>OUT OF STOCK</Col>
+                    </Row>
+                  </ListGroup.Item>
+                }
 
-                  {product.countInStock > 0 && (
-                    <ListGroup.Item>
-                      <Row className='align-items-center'>
-                        <Col>Qty</Col>
-                        <Col>
-                          <Form.Control
-                            as='select'
-                            value={qty}
-                            onChange={(e) => setQty(e.target.value)}
-                          >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
-                          </Form.Control>
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                  )}
-
+                {product.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row className='align-items-center'>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Control
+                          as='select'
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {[...Array(product.countInStock).keys()].map(
+                            (x) => (
+                              <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                              </option>
+                            )
+                          )}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
+                {product.countInStock === 0 ? '' :
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className='btn-block'
+                      className='btn-block add-to-cart'
                       type='button'
-                      disabled={product.countInStock === 0}
                     >
-                      Add To Cart
+
+                      <i className='fas fa-shopping-cart'></i> Add To Cart
                     </Button>
                   </ListGroup.Item>
-                </ListGroup>
-              </Card>
+                }
+              </ListGroup>
             </Col>
           </Row>
           <Row className='py-4'>
@@ -179,7 +174,7 @@ const ProductScreen = ({ history, match }) => {
                           <option value='5'>5 - Excellent</option>
                         </Form.Control>
                       </Form.Group>
-                      <Form.Group controlId='comment'>
+                      <Form.Group controlId='comment' className='mt-2'>
                         <Form.Label>Comment</Form.Label>
                         <Form.Control
                           as='textarea'
@@ -192,6 +187,7 @@ const ProductScreen = ({ history, match }) => {
                         disabled={loadingProductReview}
                         type='submit'
                         variant='primary'
+                        className='mt-4'
                       >
                         Submit
                       </Button>

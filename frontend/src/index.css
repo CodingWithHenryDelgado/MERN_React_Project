@@ -92,6 +92,10 @@ body {
     opacity: 0;
 }
 
+.back-arrow {
+    font-size: 2rem;
+}
+
 .product-price .card {
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.125);
@@ -115,8 +119,21 @@ body {
     font-size: 1.8rem;
 }
 
+.add-to-cart {
+    background-color: #FFE000;
+    color: #040C13;
+    font-size: 1.1rem;
+    text-transform: none;
+}
+
 .list-group {
     width: 100%;
+}
+
+.out-of-stock {
+    color: #eb0f0f;
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 @media (max-width: 900px) {
@@ -137,12 +154,12 @@ body {
         margin: 0;
     }
 
-    .thumbnail {
-        width: 75%;
+    .product-row {
+        margin: 0;
     }
 
-    .product-price .card {
-        border: none;
+    .thumbnail {
+        width: 75%;
     }
 
     .subtotal .card {
@@ -169,5 +186,9 @@ body {
         max-width: 225px;
         margin-left: auto;
         width: auto;
+    }
+
+    .thumbnail {
+        width: 60%;
     }
 }
