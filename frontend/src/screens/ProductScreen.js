@@ -59,9 +59,6 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      {/* <Link to='/'>
-        <i className="fa-solid fa-arrow-left my-4 back-arrow"></i>
-      </Link> */}
       {loading ? (
         <Loader />
       ) : error ? (
