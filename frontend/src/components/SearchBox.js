@@ -19,13 +19,23 @@ const SearchBox = ({ history }) => {
 
     return (
         <Form className='search-box' onSubmit={submitHandler} inline>
-            <Form.Control
-                type='text'
-                name='q'
-                onChange={(e) => setKeyword(e.target.value)}
-                placeholder={'Hi, ' + userInfo.name.split(' ')[0] + '! What can we help you find today?'}
-                className='mr-sm-2'
-            ></Form.Control>
+            {userInfo ?
+                <Form.Control
+                    type='text'
+                    name='q'
+                    onChange={(e) => setKeyword(e.target.value)}
+                    placeholder={'Hi, ' + userInfo.name.split(' ')[0] + '! What can we help you find today?'}
+                    className='mr-sm-2'
+                ></Form.Control>
+                :
+                <Form.Control
+                    type='text'
+                    name='q'
+                    onChange={(e) => setKeyword(e.target.value)}
+                    placeholder={'What can we help you find today?'}
+                    className='mr-sm-2'
+                ></Form.Control>}
+
         </Form>
     )
 }
