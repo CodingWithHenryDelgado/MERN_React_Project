@@ -20,6 +20,10 @@ h2 {
     padding-top: 1rem;
 }
 
+#header-container {
+    align-items: center;
+}
+
 #cart-items {
     color: #040C13;
     display: none;

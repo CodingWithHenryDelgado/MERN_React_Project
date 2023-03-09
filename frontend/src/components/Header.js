@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect id='header'>
-        <Container>
+        <Container id='header-container'>
           <LinkContainer to='/'>
             <Navbar.Brand><img src={LOGO} alt="Proshop Logo" width={75} height={75} /></Navbar.Brand>
           </LinkContainer>
