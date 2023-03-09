@@ -9,9 +9,6 @@ import { logout } from '../actions/userActions'
 const Header = () => {
   const dispatch = useDispatch()
 
-  const userDetails = useSelector((state) => state.userDetails)
-  const { user } = userDetails
-
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
