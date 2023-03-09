@@ -9,6 +9,9 @@ import { logout } from '../actions/userActions'
 const Header = () => {
   const dispatch = useDispatch()
 
+  const userDetails = useSelector((state) => state.userDetails)
+  const { user } = userDetails
+
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
@@ -33,7 +36,7 @@ const Header = () => {
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown title={`Profile`} id='username'>
+                <NavDropdown title={`Hi, ${userInfo.name.split(' ')[0]}`} id='username'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
