@@ -13,13 +13,16 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const cart = useSelector((state) => state.cart)
+  const { cartItems } = cart
+
   const logoutHandler = () => {
     dispatch(logout())
   }
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect id='header'>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand><img src={LOGO} alt="Proshop Logo" width={75} height={75} /></Navbar.Brand>
@@ -29,8 +32,9 @@ const Header = () => {
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
-                <Nav.Link>
+                <Nav.Link id="cart-icon">
                   <i className='fas fa-shopping-cart'></i>
+                  <div id="cart-items" style={{ display: cartItems.length === 0 ? "none" : "flex" }}>{cartItems.length && cartItems.length}</div>
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
