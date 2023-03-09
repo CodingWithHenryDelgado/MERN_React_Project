@@ -180,7 +180,7 @@ body {
 
 @media (min-width: 1024px) {
     #header {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
     #cart-icon {
