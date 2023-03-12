@@ -34,7 +34,7 @@ const Header = () => {
               <LinkContainer to='/cart'>
                 <Nav.Link id="cart-icon">
                   <i className='fas fa-shopping-cart'></i>
-                  <div id="cart-items" style={{ display: cartItems.length === 0 ? "none" : "flex" }}>{cartItems.length && cartItems.length}</div>
+                  <div className='d-sm-none d-lg-flex' id="cart-items">{cartItems.length && cartItems.length}</div>
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (

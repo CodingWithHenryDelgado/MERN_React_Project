@@ -94,8 +94,13 @@ body {
     padding: 1.25rem 10px;
 }
 
+#cart-icon {
+    padding-right: 15px;
+}
+
 .search-box input {
     border-radius: 10px;
+    padding-left: 15px;
 }
 
 #username {
@@ -125,6 +130,10 @@ body {
     background-color: #fff;
 }
 
+.form-control {
+    padding: 0;
+}
+
 .product-image {
     margin: 0 15px;
 }
@@ -139,6 +148,11 @@ body {
     color: #040C13;
     font-size: 1.1rem;
     text-transform: none;
+}
+
+.total-price {
+    font-size: 1.75rem;
+    font-weight: bold;
 }
 
 .list-group {

@@ -61,34 +61,36 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={2}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
-                  <Col md={3}>
-                    <Form.Control
-                      as='select'
-                      value={item.qty}
-                      onChange={(e) =>
-                        dispatch(
-                          addToCart(item.product, Number(e.target.value))
-                        )
-                      }
-                    >
-                      {/* Show dropdown of available quantities */}
-                      {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </Form.Control>
+                  <Col md={3} style={{ textAlign: 'left' }}>
+                    <Col>
+                      <Form.Control
+                        as='select'
+                        value={item.qty}
+                        onChange={(e) =>
+                          dispatch(
+                            addToCart(item.product, Number(e.target.value))
+                          )
+                        }
+                      >
+                        {/* Show dropdown of available quantities */}
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                    <Col className='pt-2'>
+                      <Button
+                        type='button'
+                        variant='light'
+                        onClick={() => removeFromCartHandler(item.product)}
+                      >
+                        Remove
+                      </Button>
+                    </Col>
                   </Col>
-                  <Col md={2}>
-                    <Button
-                      type='button'
-                      variant='light'
-                      onClick={() => removeFromCartHandler(item.product)}
-                    >
-                      <i className='fas fa-trash'></i>
-                    </Button>
-                  </Col>
+                  <Col className="total-price" md={2}>${item.price}</Col>
                 </Row>
               </ListGroup.Item>
             ))}
