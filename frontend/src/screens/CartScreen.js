@@ -53,17 +53,18 @@ const CartScreen = ({ match, location, history }) => {
         ) : (
           <ListGroup variant='flush'>
             {cartItems.map((item) => (
-              <ListGroup.Item key={item.product}>
+              <ListGroup.Item className="cart-item-list-item" key={item.product}>
                 <Row>
-                  <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+                  <Col className="d-flex justify-content-center" md={3}>
+                    <Image src={item.image} alt={item.name} fluid rounded style={{ maxWidth: '60%', height: 'auto' }} />
                   </Col>
-                  <Col md={2}>
+                  <Col className="cart-item-title" md={3} lg={5}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={3} style={{ textAlign: 'left' }}>
-                    <Col>
+                  <Col md={3} lg={2} style={{ textAlign: 'left' }}>
+                    <Col className='pl-0'>
                       <Form.Control
+                        className='cart-item-qty'
                         as='select'
                         value={item.qty}
                         onChange={(e) =>
@@ -80,8 +81,9 @@ const CartScreen = ({ match, location, history }) => {
                         ))}
                       </Form.Control>
                     </Col>
-                    <Col className='pt-2'>
+                    <Col className='pt-2 pl-0'>
                       <Button
+                        className='p-0'
                         type='button'
                         variant='light'
                         onClick={() => removeFromCartHandler(item.product)}
@@ -90,25 +92,25 @@ const CartScreen = ({ match, location, history }) => {
                       </Button>
                     </Col>
                   </Col>
-                  <Col className="total-price" md={2}>${item.price}</Col>
+                  <Col className="cart-item-total-price" md={3} lg={2}>${item.price}</Col>
                 </Row>
               </ListGroup.Item>
             ))}
           </ListGroup>
         )}
       </Col>
-      <Col md={4} className='subtotal'>
+      <Col md={4}>
         {/* Show subtotal and checkout button */}
-        <Card>
+        <Card className='subtotal'>
           <ListGroup variant='flush'>
-            <ListGroup.Item>
+            <ListGroup.Item className='cart-total'>
               <h2>
                 Order Summary
               </h2>
-              $
-              {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)}
+              <span>Total: $
+                {cartItems
+                  .reduce((acc, item) => acc + item.qty * item.price, 0)
+                  .toFixed(2)}</span>
             </ListGroup.Item>
             {
               cartItems.length === 0 ?
