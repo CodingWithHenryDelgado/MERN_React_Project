@@ -29,10 +29,10 @@ const RegisterScreen = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if(password !== confirmPassword) {
-        setMessage('Passwords do not match')
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match')
     } else {
-        dispatch(register(name,email,password))
+      dispatch(register(name, email, password))
     }
   }
 
@@ -74,13 +74,13 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Form.Group controlId='confirmPassword'>
-        <Form.Label>Confirm Password</Form.Label>
-        <Form.Control
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
             type='password'
             placeholder='Confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-        ></Form.Control>
+          ></Form.Control>
         </Form.Group>
 
         <Button type='submit' variant='primary' className='my-3'>
