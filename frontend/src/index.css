@@ -252,6 +252,7 @@ body {
 
     #cart-icon {
         position: relative;
+        padding-right: 8px;
     }
 
     #cart-items {
