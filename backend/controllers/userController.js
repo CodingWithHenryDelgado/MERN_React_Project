@@ -28,34 +28,69 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password } = req.body;
 
-    const userExists = await User.findOne({ email })
+    try {
+        // Generate a random code with six digits
+        const code = Math.floor(Math.random() * 1000000)
+            .toString()
+            .padStart(6, "0");
 
-    if (userExists) {
-        res.status(400)
-        throw new Error('User already exists')
-    }
+        // Create a nodemailer transport
+        const transport = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_PASS,
+            },
+        });
 
-    const user = await User.create({
-        name,
-        email,
-        password,
-    })
+        // Send the email with the verification code
+        await transport.sendMail({
+            user: process.env.GMAIL_USER,
+            to: email,
+            subject: "Verify Your Email Address",
+            text: `Your verification code is ${code}`,
+        });
 
-    if (user) {
+        // Wait for the user to enter the verification code
+        const { verificationCode } = await inquirer.prompt([
+            {
+                type: "input",
+                name: "verificationCode",
+                message: "Enter the verification code sent to your email:",
+            },
+        ]);
+
+        // Validate the code sent by the user
+        if (verificationCode !== code) {
+            return res.status(400).json({ error: "Invalid verification code" });
+        }
+
+        // Create a new user with emailValidated set to true
+        const user = await User.create({
+            name,
+            email,
+            password,
+            emailValidated: true,
+        });
+
+        // Generate a JWT token for the user
+        const token = generateToken(user._id, user.isAdmin);
+
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            token: generateToken(user._id),
-        })
-    } else {
-        res.status(400)
-        throw new Error('Invalid user data')
+            token,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Failed to register user" });
     }
-})
+});
 
 // @desc    Get user profile
 // @route   GET /api/users/profile
