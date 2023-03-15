@@ -38,4 +38,16 @@ describe('Rating component', () => {
         const wrapper = shallow(<Rating value={3} color="#123456" />);
         expect(wrapper.find('i').first().prop('style').color).toEqual('#123456');
     });
+
+    it('should render one full star and four empty star when given a rating of 1.2', () => {
+        const wrapper = shallow(<Rating value={1.2} />);
+        expect(wrapper.find('i.fas.fa-star')).toHaveLength(1);
+        expect(wrapper.find('i.far.fa-star')).toHaveLength(4);
+    });
+
+    it('should render half a star and four empty star when given a rating of 0.5', () => {
+        const wrapper = shallow(<Rating value={0.5} />);
+        expect(wrapper.find('i.fas.fa-star-half-alt')).toHaveLength(1);
+        expect(wrapper.find('i.far.fa-star')).toHaveLength(4);
+    });
 });
