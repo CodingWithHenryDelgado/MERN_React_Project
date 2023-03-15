@@ -4,6 +4,7 @@ import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Rating from '../../src/components/Rating';
 
+//Wojtekmaj module bridges Enzyme with React 17.
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rating component', () => {

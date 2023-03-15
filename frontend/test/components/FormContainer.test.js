@@ -5,6 +5,7 @@ import FormContainer from '../../src/components/FormContainer';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
+//Wojtekmaj module bridges Enzyme with React 17.
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('FormContainer component', () => {

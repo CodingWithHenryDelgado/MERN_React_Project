@@ -8,6 +8,7 @@ import Header from '../../src/components/Header';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
+//Wojtekmaj module bridges Enzyme with React 17.
 Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureStore([]);

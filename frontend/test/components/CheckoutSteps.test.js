@@ -6,6 +6,7 @@ import CheckoutSteps from '../../src/components/CheckoutSteps';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
+//Wojtekmaj module bridges Enzyme with React 17.
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('CheckoutSteps', () => {
