@@ -28,10 +28,8 @@ describe('Header', () => {
             <Header />
         );
 
-        // const image = screen.getByAltText('Proshop Logo');
         const searchBox = screen.getByRole('textbox');
 
-        // expect(image.src).toEqual(true);
         expect(searchBox.getAttribute('placeholder')).toEqual("What can we help you find today?")
     });
 
