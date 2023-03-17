@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Checking that the header component matches snapshot 1`] = `
+<div>
+  <header>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark"
+      id="header"
+    >
+      <div
+        class="container"
+        id="header-container"
+      >
+        <a
+          class="active navbar-brand"
+          href="/"
+        >
+          <img
+            alt="Proshop Logo"
+            height="75"
+            src="data:image/png;base64,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"
+            width="75"
+          />
+        </a>
+        <button
+          aria-controls="basic-navbar-nav"
+          aria-label="Toggle navigation"
+          class="navbar-toggler collapsed"
+          type="button"
+        >
+          <span
+            class="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          class="navbar-collapse collapse"
+          id="basic-navbar-nav"
+        >
+          <form
+            class="search-box"
+            inline="true"
+          >
+            <input
+              class="mr-sm-2 form-control"
+              name="q"
+              placeholder="What can we help you find today?"
+              type="text"
+            />
+          </form>
+          <div
+            class="ml-auto navbar-nav"
+          >
+            <a
+              class="nav-link"
+              data-rr-ui-event-key="/cart"
+              href="/cart"
+              id="cart-icon"
+            >
+              <i
+                class="fas fa-shopping-cart"
+              />
+              <div
+                class="d-sm-none d-none"
+                id="cart-items"
+              >
+                0
+              </div>
+            </a>
+            <a
+              class="nav-link"
+              data-rr-ui-event-key="/login"
+              href="/login"
+            >
+              <i
+                class="fas fa-user"
+              />
+              Sign In
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+</div>
+`;
