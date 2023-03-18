@@ -33,6 +33,28 @@ describe('Header', () => {
         expect(searchBox.getAttribute('placeholder')).toEqual("What can we help you find today?")
     });
 
+    it('renders search box with personalized message', () => {
+        const initialState = {
+            cart: {
+                cartItems: [{}, {}, {}],
+            },
+            userLogin: {
+                userInfo: {
+                    _id: 1,
+                    name: "Henry Delgado",
+                    email: "hdelgado@centercentre.com",
+                    isAdmin: false
+                }
+            }
+        };
+
+        render(<Header />, { initialState });
+
+        const searchBox = screen.getByRole('textbox');
+
+        expect(searchBox.getAttribute('placeholder')).toEqual("Hi, Henry! What can we help you find today?")
+    });
+
     it('renders the sign in link', () => {
         const initialState = {
             cart: {
