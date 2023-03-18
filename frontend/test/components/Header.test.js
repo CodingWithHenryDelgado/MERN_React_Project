@@ -88,7 +88,6 @@ describe('Header', () => {
         expect(dropdown[2].textContent).toEqual('Admin');
     });
 
-
     it('displays the dropdown when the button is clicked', () => {
         const initialState = {
             cart: {
@@ -119,5 +118,42 @@ describe('Header', () => {
         const logoutButton = screen.getAllByRole('button');
 
         expect(logoutButton[2].textContent).toEqual('Logout');
+    });
+
+
+    it('displays the dropdown when the admin button is clicked', () => {
+        const initialState = {
+            cart: {
+                cartItems: [{}, {}, {}],
+            },
+            userLogin: {
+                userInfo: {
+                    _id: 1,
+                    name: "Henry Delgado",
+                    email: "hdelgado@centercentre.com",
+                    isAdmin: true
+                }
+            }
+        };
+
+        render(<Header />, { initialState });
+
+        const dropdown = screen.getAllByRole('button');
+
+        const adminDropdown = dropdown[2];
+
+        fireEvent.click(adminDropdown);
+
+        const userLink = screen.getAllByRole('link');
+
+        expect(userLink[2].textContent).toEqual('Users');
+
+        const productLink = screen.getAllByRole('link');
+
+        expect(productLink[3].textContent).toEqual('Products');
+
+        const orderLink = screen.getAllByRole('link');
+
+        expect(orderLink[4].textContent).toEqual('Orders');
     });
 });  
