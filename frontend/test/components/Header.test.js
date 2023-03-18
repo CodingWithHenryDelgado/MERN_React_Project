@@ -66,4 +66,25 @@ describe('Header', () => {
         const dropdown = screen.getAllByRole('button');
         expect(dropdown[1].textContent).toEqual('Hi, Henry');
     });
+
+    it('renders the admin drop down', () => {
+        const initialState = {
+            cart: {
+                cartItems: [{}, {}, {}],
+            },
+            userLogin: {
+                userInfo: {
+                    _id: 1,
+                    name: "Henry Delgado",
+                    email: "hdelgado@centercentre.com",
+                    isAdmin: true
+                }
+            }
+        };
+
+        render(<Header />, { initialState });
+
+        const dropdown = screen.getAllByRole('button');
+        expect(dropdown[2].textContent).toEqual('Admin');
+    });
 });  
