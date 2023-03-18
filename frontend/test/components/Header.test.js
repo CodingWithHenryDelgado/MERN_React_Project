@@ -1,7 +1,7 @@
 import React, { createElement } from 'react';
 // Replace this with the appropriate location of your component
 // Replace this with the appropriate location of your testing utility
-import { render, screen } from '../utils/test-utils';
+import { render, screen, fireEvent } from '../utils/test-utils';
 import Header from './../../src/components/Header';
 
 describe('Header', () => {
@@ -86,5 +86,38 @@ describe('Header', () => {
 
         const dropdown = screen.getAllByRole('button');
         expect(dropdown[2].textContent).toEqual('Admin');
+    });
+
+
+    it('displays the dropdown when the button is clicked', () => {
+        const initialState = {
+            cart: {
+                cartItems: [{}, {}, {}],
+            },
+            userLogin: {
+                userInfo: {
+                    _id: 1,
+                    name: "Henry Delgado",
+                    email: "hdelgado@centercentre.com",
+                    isAdmin: true
+                }
+            }
+        };
+
+        render(<Header />, { initialState });
+
+        const dropdown = screen.getAllByRole('button');
+
+        const profileDropdown = dropdown[1];
+
+        fireEvent.click(profileDropdown);
+
+        const profileLink = screen.getAllByRole('link');
+
+        expect(profileLink[2].textContent).toEqual('Profile');
+
+        const logoutButton = screen.getAllByRole('button');
+
+        expect(logoutButton[2].textContent).toEqual('Logout');
     });
 });  
