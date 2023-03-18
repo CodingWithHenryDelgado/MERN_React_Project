@@ -37,11 +37,6 @@ describe('Header', () => {
         const initialState = {
             cart: {
                 cartItems: [{}, {}, {}],
-            },
-            userLogin: {
-                _id: 1,
-                name: "Henry Delgado",
-                email: "hdelgado@centercentre.com"
             }
         };
 
@@ -51,23 +46,24 @@ describe('Header', () => {
         expect(dropdown[2].textContent).toEqual('Sign In');
     });
 
-    // it('renders the username', () => {
-    //     const initialState = {
-    //         cart: {
-    //             cartItems: [{}, {}, {}],
-    //         },
-    //         userLogin: {
-    //             _id: 123456,
-    //             user: 123467,
-    //             name: "Henry Delgado",
-    //             email: "hdelgado@centercentre.com",
-    //             isAdmin: false
-    //         }
-    //     };
+    it('renders the username', () => {
+        const initialState = {
+            cart: {
+                cartItems: [{}, {}, {}],
+            },
+            userLogin: {
+                userInfo: {
+                    _id: 1,
+                    name: "Henry Delgado",
+                    email: "hdelgado@centercentre.com",
+                    isAdmin: false
+                }
+            }
+        };
 
-    //     render(<Header />, { initialState });
+        render(<Header />, { initialState });
 
-    //     const dropdown = screen.getAllByRole('link');
-    //     expect(dropdown[2].textContent).toEqual('Hi, Henry!');
-    // });
+        const dropdown = screen.getAllByRole('button');
+        expect(dropdown[1].textContent).toEqual('Hi, Henry');
+    });
 });  
