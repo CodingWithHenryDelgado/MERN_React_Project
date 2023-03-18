@@ -1,6 +1,4 @@
 import React, { createElement } from 'react';
-// Replace this with the appropriate location of your component
-// Replace this with the appropriate location of your testing utility
 import { render, screen, fireEvent } from '../utils/test-utils';
 import Header from './../../src/components/Header';
 
