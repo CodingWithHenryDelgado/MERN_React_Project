@@ -10,16 +10,50 @@ describe('Product Carousel', () => {
         expect(view.container).toMatchSnapshot()
     })
 
+    test('should render loader when products are being fetched', () => {
+        const initialState = {
+            productTopRated: {
+                loading: true,
+                error: false,
+                products: []
+            }
+        };
+
+        render(
+            <ProductCarousel />, { initialState }
+
+        );
+
+        const cartInfo = screen.getByRole('status');
+        expect(cartInfo.textContent).toEqual('Loading...');
+    });
+
     // test('displays correct number of items in cart', () => {
     //     const initialState = {
-    //         cart: {
-    //             cartItems: [{}, {}, {}],
+    //         products: {
+    //             loading: false,
+    //             image_1: {
+    //                 _id: '1',
+    //                 name: 'Product 1',
+    //                 image: 'image1.jpg',
+    //             },
+    //             image_2: {
+    //                 _id: '2',
+    //                 name: 'Product 2',
+    //                 image: 'image2.jpg',
+    //             }
     //         },
-    //     };
-    //     render(<Header />, { initialState });
-    //     const cartInfo = screen.getAllByRole('link');
-    //     expect(cartInfo[1].textContent).toEqual('3');
-    // });
+
+    //     }
+
+    //     render(
+    //         <ProductCarousel />, { initialState }
+
+    //     );
+
+    //     const cartInfo = screen.getByRole('');
+    //     expect(cartInfo.textContent).toEqual('Loading...');
+    // })
 
     // it('renders search box', () => {
     //     render(

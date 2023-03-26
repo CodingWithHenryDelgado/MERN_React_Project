@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { MemoryRouter, Router } from 'react-router-dom'
+import '@testing-library/jest-dom/extend-expect'
 import {
     productListReducer,
     productDetailsReducer,
