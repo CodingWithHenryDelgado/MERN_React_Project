@@ -1,9 +1,10 @@
 import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { createMemoryHistory } from 'history';
-import { MemoryRouter, Router } from 'react-router-dom'; // import MemoryRouter from react-router-dom
+import { createMemoryHistory } from 'history'
+import { MemoryRouter, Router } from 'react-router-dom'
 import {
     productListReducer,
     productDetailsReducer,
@@ -56,7 +57,7 @@ const reducer = combineReducers({
     orderList: orderListReducer,
 })
 
-const render = (ui, { initialState, store = createStore(reducer, initialState), ...renderOptions } = {}) => {
+const render = (ui, { initialState, store = createStore(reducer, initialState, applyMiddleware(thunk)), ...renderOptions } = {}) => {
 
     const history = createMemoryHistory();
 

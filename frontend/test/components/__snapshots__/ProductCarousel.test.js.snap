@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Carousel Checking that the product carousel component matches snapshot 1`] = `
+<div>
+  <div
+    class="spinner-border"
+    role="status"
+    style="width: 100px; height: 100px; margin: auto; display: block;"
+  >
+    <span
+      class="sr-only"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
