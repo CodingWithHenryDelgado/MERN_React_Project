@@ -1,5 +1,5 @@
 import React, { createElement } from 'react';
-import { render, screen, fireEvent } from '../utils/test-utils';
+import { render, screen, waitFor } from '../utils/test-utils';
 import ProductCarousel from './../../src/components/ProductCarousel';
 
 describe('Product Carousel', () => {
@@ -11,16 +11,8 @@ describe('Product Carousel', () => {
     })
 
     test('should render loader when products are being fetched', () => {
-        const initialState = {
-            productTopRated: {
-                loading: true,
-                error: false,
-                products: []
-            }
-        };
-
         render(
-            <ProductCarousel />, { initialState }
+            <ProductCarousel loading={true} />
 
         );
 
@@ -28,32 +20,34 @@ describe('Product Carousel', () => {
         expect(cartInfo.textContent).toEqual('Loading...');
     });
 
-    // test('displays correct number of items in cart', () => {
-    //     const initialState = {
-    //         products: {
-    //             loading: false,
-    //             image_1: {
-    //                 _id: '1',
-    //                 name: 'Product 1',
-    //                 image: 'image1.jpg',
-    //             },
-    //             image_2: {
-    //                 _id: '2',
-    //                 name: 'Product 2',
-    //                 image: 'image2.jpg',
-    //             }
-    //         },
+    test('display images on product carousel', async () => {
+        const initialState = {
+            productTopRated: {
+                loading: false,
+                error: null,
+                products: [
+                    {
+                        _id: '1',
+                        name: 'Product 1',
+                        image: 'image1.jpg',
+                    },
+                    {
+                        _id: '2',
+                        name: 'Product 2',
+                        image: 'image2.jpg',
+                    }
+                ]
+            },
+        }
 
-    //     }
+        render(
+            <ProductCarousel />, { initialState }
 
-    //     render(
-    //         <ProductCarousel />, { initialState }
+        );
 
-    //     );
-
-    //     const cartInfo = screen.getByRole('');
-    //     expect(cartInfo.textContent).toEqual('Loading...');
-    // })
+        const images = screen.getAllByRole('img')
+        await expect(images).toHaveLength(initialState.productTopRated.products.length)
+    })
 
     // it('renders search box', () => {
     //     render(
